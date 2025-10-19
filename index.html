@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>時間計算</title>
   <style>
     :root{
       --bg-start: #e9f0ff;
@@ -136,3 +141,56 @@
       div { gap: 8px; }
     }
   </style>
+</head>
+<body>
+  <h2>時間計算</h2>
+  <div>
+    <label>時間1:</label>
+    <input type="number" id="hours1" min="0" max="23" placeholder="時">
+    <input type="number" id="minutes1" min="0" max="59" placeholder="分">
+  </div>
+  <div>
+    <label>時間2:</label>
+    <input type="number" id="hours2" min="0" max="23" placeholder="時">
+    <input type="number" id="minutes2" min="0" max="59" placeholder="分">
+  </div>
+  <button onclick="calculateTotal()">合計を計算</button>
+  <div id="result"></div>
+
+  <script>
+    // 累計を保持
+    let accumulatedMinutes = 0;
+
+    function minutesToHMS(minutes) {
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return { h, m };
+    }
+
+    function calculateTotal() {
+      const hours1 = parseInt(document.getElementById('hours1').value) || 0;
+      const minutes1 = parseInt(document.getElementById('minutes1').value) || 0;
+      const hours2 = parseInt(document.getElementById('hours2').value) || 0;
+      const minutes2 = parseInt(document.getElementById('minutes2').value) || 0;
+
+      const currentMinutes = (hours1 + hours2) * 60 + minutes1 + minutes2;
+      const current = minutesToHMS(currentMinutes);
+
+      // 累計に加算
+      accumulatedMinutes += currentMinutes;
+      const total = minutesToHMS(accumulatedMinutes);
+
+      // 今回の合計と累計を表示（累計は削除しない）
+      document.getElementById('result').innerHTML =
+        `今回の合計: ${current.h}時間 ${current.m}分<br>` +
+        `累計時間: ${total.h}時間 ${total.m}分`;
+
+      // 時間1, 時間2の入力をリセット（合計表示は残す）
+      document.getElementById('hours1').value = '';
+      document.getElementById('minutes1').value = '';
+      document.getElementById('hours2').value = '';
+      document.getElementById('minutes2').value = '';
+    }
+  </script>
+</body>
+
