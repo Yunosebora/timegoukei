@@ -1,0 +1,138 @@
+  <style>
+    :root{
+      --bg-start: #e9f0ff;
+      --bg-end: #ffffff;
+      --card: #ffffff;
+      --accent: #4b9fff;
+      --accent-2: #2f7be5;
+      --muted: #666;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 30px rgba(33,47,70,0.08);
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 中央寄せ */
+      font-family: "Noto Sans JP", "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100vh;
+      margin: 40px auto;
+      max-width: 720px;
+      padding: 28px;
+      color: #213145;
+      background-attachment: fixed;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Header */
+    h2 {
+      margin: 0 0 18px 0;
+      color: var(--accent-2);
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(50,90,200,0.08);
+      width: 100%;
+      text-align: center; /* 見出しを中央 */
+    }
+
+    /* Form rows */
+    div {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center; /* 行内の要素を中央に揃える */
+      width: 100%;
+    }
+
+    /* Label */
+    label {
+      min-width: 64px;
+      color: var(--muted);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Inputs */
+    input[type="number"]{
+      -moz-appearance: textfield;
+      appearance: none;
+      width: 84px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(33,49,80,0.08);
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(245,248,255,0.9));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      font-size: 1rem;
+      color: #132036;
+      transition: border-color .18s ease, box-shadow .18s ease, transform .06s ease;
+    }
+
+    /* Hide number input spinners in WebKit */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Input focus */
+    input[type="number"]:focus {
+      outline: none;
+      border-color: rgba(79,142,255,0.95);
+      box-shadow: 0 6px 18px rgba(47,123,229,0.08);
+      transform: translateY(-1px);
+    }
+
+    /* Button */
+    button {
+      display: inline-block;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      color: #fff;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 8px 20px rgba(47,123,229,0.18);
+      transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    }
+
+    button:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(47,123,229,0.2); }
+    button:active { transform: translateY(-1px); }
+
+    /* Result box */
+    #result {
+      margin-top: 18px;
+      font-size: 1.05rem;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(245,248,255,0.9), rgba(250,250,255,0.95));
+      border: 1px solid rgba(47,123,229,0.06);
+      color: #123;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      width: 100%;
+    }
+
+    /* Small helper text styling if inserted later */
+    small {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive: narrow screens */
+    @media (max-width: 480px) {
+      body { padding: 18px; margin: 20px; }
+      input[type="number"] { width: 72px; padding: 8px; }
+      label { min-width: 56px; font-size: 0.95rem; }
+      button { width: 100%; text-align: center; }
+      div { gap: 8px; }
+    }
+  </style>
